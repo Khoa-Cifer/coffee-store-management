@@ -56,7 +56,7 @@ public class Ingredient {
 
     public static Ingredient interactWithDb(String line) {
         String[] fields = line.split("#");
-        return new Ingredient(fields[1], fields[2], Integer.parseInt(fields[3]), Boolean.parseBoolean(fields[4]));
+        return new Ingredient(fields[0], fields[1], Integer.parseInt(fields[2]), Boolean.parseBoolean(fields[3]));
     }
     @Override
     public String toString() {

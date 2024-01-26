@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 
 public class IngredientDaoImp implements IngredientDAO {
-    private static final File file = new File("src/resource/Ingredient.dat");
+    private static final File file = new File("src/com/cifer/coffeestoremanagement/resource/Ingredient.dat");
     @Override
     public ArrayList<Ingredient> getAllIngredients() {
         ArrayList<Ingredient> ingredientArrayList = new ArrayList<>();
@@ -23,6 +23,7 @@ public class IngredientDaoImp implements IngredientDAO {
             }
             fileReader.close();
             bufferedReader.close();
+            return ingredientArrayList;
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -32,7 +33,7 @@ public class IngredientDaoImp implements IngredientDAO {
     @Override
     public boolean insertIngredient(Ingredient ingredient) {
         try {
-            FileWriter fileWriter = new FileWriter(file);
+            FileWriter fileWriter = new FileWriter(file, true);
             fileWriter.write(ingredient.toString() + "\n");
             fileWriter.close();
             return true;

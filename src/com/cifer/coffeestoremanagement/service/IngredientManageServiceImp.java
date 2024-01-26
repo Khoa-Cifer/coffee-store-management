@@ -5,7 +5,9 @@
  */
 package com.cifer.coffeestoremanagement.service;
 
+import com.cifer.coffeestoremanagement.controller.IngredientController;
 import com.cifer.coffeestoremanagement.dao.IngredientDAO;
+import com.cifer.coffeestoremanagement.dao.IngredientDaoImp;
 import com.cifer.coffeestoremanagement.model.Ingredient;
 import com.cifer.coffeestoremanagement.model.Menu;
 
@@ -16,19 +18,11 @@ import java.util.List;
  *
  * @author Cifer
  */
-public class IngredientManageServiceImp extends ArrayList<Ingredient> implements IngredientManageService {
-    private IngredientDAO ingredientDAO;
-
-    public IngredientManageServiceImp(IngredientDAO ingredientDAO) {
-        this.ingredientDAO = ingredientDAO;
-    }
-
-    private List<Menu> menuList = new ArrayList<>();
-    private List<Ingredient> stringList = new ArrayList<>();
+public class IngredientManageServiceImp implements IngredientManageService {
+    private IngredientDaoImp ingredientDAO = new IngredientDaoImp();
     @Override
-    public void addIngredient() {
-
-
+    public void addIngredient(Ingredient ingredient) {
+        ingredientDAO.insertIngredient(ingredient);
     }
 
     @Override
@@ -43,7 +37,12 @@ public class IngredientManageServiceImp extends ArrayList<Ingredient> implements
 
     @Override
     public void showIngredient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        for (int i = 0; i < ingredientDAO.getAllIngredients().size(); i++) {
+            System.out.println(ingredientDAO.getAllIngredients().get(i).toString());
+        }
     }
-    
+
+    public int totalIngredient() {
+        return ingredientDAO.getAllIngredients().size();
+    }
 }

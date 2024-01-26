@@ -5,13 +5,17 @@
  */
 package com.cifer.coffeestoremanagement.service;
 
+import com.cifer.coffeestoremanagement.model.Ingredient;
+
+import java.util.ArrayList;
+
 /**
  *
  * @author Cifer
  */
 public interface IngredientManageService {
 
-    void addIngredient();
+    void addIngredient(Ingredient ingredient);
 
     void updateIngredientInformation();
 
