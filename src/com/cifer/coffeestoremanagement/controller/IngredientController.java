@@ -20,10 +20,16 @@ public class IngredientController {
     }
 
     //Put
-    public void updateIngredient(Ingredient oldIngredient) {
-        String name = Utils.updateString("Update ingredient's name", 10, oldIngredient.getName());
-        int quantity = Utils.updateNumber("Update ingredient's quantity", 0, 1000, oldIngredient.getQuantity());
-        ingredientManageService.updateIngredientInformation(oldIngredient);
+    public void updateIngredient() {
+        String ingredientId = Utils.getString("Input ID to search: ", 8);
+        Ingredient ingredient = ingredientManageService.getIngredient(ingredientId);
+        if (ingredient != null) {
+            ingredient.setName(Utils.updateString("Update ingredient's name: ", 10, ingredient.getName()));
+            ingredient.setQuantity(Utils.updateNumber("Update Ingredient's quantity: ", 0, 1000, ingredient.getQuantity()));
+            ingredientManageService.updateIngredientInformation(ingredient);
+        } else {
+            System.err.println("Ingredient not found !");
+        }
     }
 
     //Delete

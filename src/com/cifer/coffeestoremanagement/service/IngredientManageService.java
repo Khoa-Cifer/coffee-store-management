@@ -17,7 +17,7 @@ public interface IngredientManageService {
 
     void addIngredient(Ingredient ingredient);
 
-    void updateIngredientInformation(Ingredient ingredient);
+    boolean updateIngredientInformation(Ingredient ingredient);
 
     void deleteIngredient(Ingredient ingredient);
 

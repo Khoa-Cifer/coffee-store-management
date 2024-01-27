@@ -26,8 +26,8 @@ public class IngredientManageServiceImp implements IngredientManageService {
     }
 
     @Override
-    public void updateIngredientInformation(Ingredient ingredient) {
-
+    public boolean updateIngredientInformation(Ingredient ingredient) {
+        return  ingredientDAO.updateIngredient(ingredient);
     }
 
     @Override
@@ -45,5 +45,8 @@ public class IngredientManageServiceImp implements IngredientManageService {
 
     public int totalIngredient() {
         return ingredientDAO.getAllIngredients().size();
+    }
+    public Ingredient getIngredient(String ingredientCode) {
+        return ingredientDAO.getIngredient(ingredientCode);
     }
 }

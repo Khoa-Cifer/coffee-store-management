@@ -13,7 +13,8 @@ public class Application {
         MenuUtils menuUtils = new MenuUtilsImp();
         IngredientController ingredientController = new IngredientController();
         menuUtils.addItem("1. Add ingredient");
-        menuUtils.addItem("2. Show all ingredients");
+        menuUtils.addItem("2. Update ingredient");
+        menuUtils.addItem("3. Show all ingredients");
         int choice;
         do {
             menuUtils.showMenu();
@@ -23,10 +24,13 @@ public class Application {
                     ingredientController.addIngredient();
                     break;
                 case 2:
+                    ingredientController.updateIngredient();
+                    break;
+                case 3:
                     ingredientController.showAllAvailableIngredient();
                     break;
             }
-        } while (choice != 3);
+        } while (choice != 4);
     }
 
     public static void checkFile() throws IOException {

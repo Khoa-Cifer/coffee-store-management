@@ -61,17 +61,20 @@ public class IngredientDaoImp implements IngredientDAO {
     }
 
     @Override
-    public boolean updateIngredient(String ingredientCode) {
+    public boolean updateIngredient(Ingredient newIngredient) {
         try {
-            File tempFile = new File("src/resources/temp.dat");
-            FileReader fileReader = new FileReader(tempFile);
+            File tempFile = new File("src/com/cifer/coffeestoremanagement/resource/temp.dat");
+            if (!tempFile.exists()) {
+                tempFile.createNewFile();
+            }
+            FileReader fileReader = new FileReader(file);
             BufferedReader bufferedReader = new BufferedReader(fileReader);
             FileWriter fileWriter = new FileWriter(tempFile);
             String line;
             while ((line = bufferedReader.readLine()) != null) {
                 Ingredient ingredient = Ingredient.interactWithDb(line);
-                if (ingredient.getId().equalsIgnoreCase(ingredientCode)) {
-                    //fileWriter.write( + "\n");
+                if (ingredient.getId().equalsIgnoreCase(newIngredient.getId())) {
+                    fileWriter.write(newIngredient.toString() + "\n");
                 } else {
                     fileWriter.write(line + "\n");
                 }
