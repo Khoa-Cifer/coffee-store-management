@@ -26,14 +26,15 @@ public class IngredientManageServiceImp implements IngredientManageService {
     }
 
     @Override
-    public void updateIngredientInformation() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void updateIngredientInformation(Ingredient ingredient) {
+
     }
 
     @Override
-    public void deleteIngredient() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public void deleteIngredient(Ingredient ingredient) {
+
     }
+
 
     @Override
     public void showIngredient() {

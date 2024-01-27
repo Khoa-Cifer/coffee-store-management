@@ -5,6 +5,9 @@
  */
 package com.cifer.coffeestoremanagement.util;
 
+import com.cifer.coffeestoremanagement.model.Beverage;
+
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -20,6 +23,18 @@ public class Utils {
         return prefix + String.format(format, currentSize);
     }
 
+    public static int getUniqueId(ArrayList<Beverage> list) {
+        if (list.isEmpty()) {
+            return -1;
+        }
+        String id = Utils.getString("Input ID to find: ", 7);
+        for (int i = 0; i < list.size(); i++) {
+            if (list.get(i).getId().equalsIgnoreCase(id) && list.get(i).isStatus() == true) {
+                return i;
+            }
+        }
+        return -1;
+    }
     public static String getString(String welcome, int stringLength) {
         String result = "";
         sc = new Scanner(System.in);

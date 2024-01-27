@@ -52,7 +52,7 @@ public class DrinkDaoImp implements DrinkDao {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
                 Drink drink = Drink.interactWithDb(line);
-                if (drink.getCode().equalsIgnoreCase(drinkCode)) {
+                if (drink.getId().equalsIgnoreCase(drinkCode)) {
                     fileReader.close();
                     bufferedReader.close();
                     return drink;

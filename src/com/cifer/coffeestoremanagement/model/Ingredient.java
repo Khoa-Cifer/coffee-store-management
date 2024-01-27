@@ -9,33 +9,13 @@ package com.cifer.coffeestoremanagement.model;
  *
  * @author Cifer
  */
-public class Ingredient {
-    private String code;
-    private String name;
+public class Ingredient extends Beverage {
+
     private int quantity;
-    private boolean status;
 
-    public Ingredient(String code, String name, int quantity, boolean status) {
-        this.code = code;
-        this.name = name;
+    public Ingredient(String id, String name, int quantity, boolean status) {
+        super(id, name, status);
         this.quantity = quantity;
-        this.status = status;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public int getQuantity() {
@@ -46,20 +26,12 @@ public class Ingredient {
         this.quantity = quantity;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
-
     public static Ingredient interactWithDb(String line) {
         String[] fields = line.split("#");
         return new Ingredient(fields[0], fields[1], Integer.parseInt(fields[2]), Boolean.parseBoolean(fields[3]));
     }
     @Override
     public String toString() {
-        return code + "#" + name + "#" + quantity + "#" + status;
+        return id + "#" + name + "#" + quantity + "#" + status;
     }
 }

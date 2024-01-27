@@ -20,10 +20,10 @@ public class IngredientController {
     }
 
     //Put
-    public Ingredient updateIngredient(Ingredient oldIngredient) {
+    public void updateIngredient(Ingredient oldIngredient) {
         String name = Utils.updateString("Update ingredient's name", 10, oldIngredient.getName());
         int quantity = Utils.updateNumber("Update ingredient's quantity", 0, 1000, oldIngredient.getQuantity());
-        return new Ingredient(oldIngredient.getCode(), name, quantity, oldIngredient.isStatus());
+        ingredientManageService.updateIngredientInformation(oldIngredient);
     }
 
     //Delete

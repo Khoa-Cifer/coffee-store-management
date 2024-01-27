@@ -2,10 +2,7 @@ package com.cifer.coffeestoremanagement.dao;
 
 import com.cifer.coffeestoremanagement.model.Ingredient;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
+import java.io.*;
 import java.util.ArrayList;
 
 public class IngredientDaoImp implements IngredientDAO {
@@ -51,7 +48,7 @@ public class IngredientDaoImp implements IngredientDAO {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
                 Ingredient ingredient = Ingredient.interactWithDb(line);
-                if (ingredient.getCode().equalsIgnoreCase(ingredientCode)) {
+                if (ingredient.getId().equalsIgnoreCase(ingredientCode)) {
                     fileReader.close();
                     bufferedReader.close();
                     return ingredient;
@@ -65,6 +62,28 @@ public class IngredientDaoImp implements IngredientDAO {
 
     @Override
     public boolean updateIngredient(String ingredientCode) {
+        try {
+            File tempFile = new File("src/resources/temp.dat");
+            FileReader fileReader = new FileReader(tempFile);
+            BufferedReader bufferedReader = new BufferedReader(fileReader);
+            FileWriter fileWriter = new FileWriter(tempFile);
+            String line;
+            while ((line = bufferedReader.readLine()) != null) {
+                Ingredient ingredient = Ingredient.interactWithDb(line);
+                if (ingredient.getId().equalsIgnoreCase(ingredientCode)) {
+                    //fileWriter.write( + "\n");
+                } else {
+                    fileWriter.write(line + "\n");
+                }
+            }
+            bufferedReader.close();
+            fileWriter.close();
+            file.delete();
+            tempFile.renameTo(file);
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return false;
     }
 

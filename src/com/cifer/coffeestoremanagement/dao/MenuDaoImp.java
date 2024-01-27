@@ -52,7 +52,7 @@ public class MenuDaoImp implements MenuDAO {
             String line = null;
             while ((line = bufferedReader.readLine()) != null) {
                 Menu menu = Menu.interactWithDb(line);
-                if (menu.getCode().equalsIgnoreCase(menuCode)) {
+                if (menu.getId().equalsIgnoreCase(menuCode)) {
                     fileReader.close();
                     bufferedReader.close();
                     return menu;

@@ -12,33 +12,13 @@ import java.util.List;
  *
  * @author Cifer
  */
-public class Menu {
-    private String code;
-    private String name;
+public class Menu extends Beverage {
+
     private List<Drink> drinkList;
-    private boolean status;
 
-    public Menu(String code, String name, List<Drink> drinkList, boolean status) {
-        this.code = code;
-        this.name = name;
+    public Menu(String id, String name, List<Drink> drinkList, boolean status) {
+        super(id, name, status);
         this.drinkList = drinkList;
-        this.status = status;
-    }
-
-    public String getCode() {
-        return code;
-    }
-
-    public void setCode(String code) {
-        this.code = code;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public List<Drink> getDrinkList() {
@@ -49,13 +29,6 @@ public class Menu {
         this.drinkList = drinkList;
     }
 
-    public boolean isStatus() {
-        return status;
-    }
-
-    public void setStatus(boolean status) {
-        this.status = status;
-    }
     public static Menu interactWithDb(String line) {
         String[] fields = line.split("\\|");
         Drink newDrink = Drink.interactWithDb(fields[2]);
@@ -63,6 +36,6 @@ public class Menu {
     }
     @Override
     public String toString() {
-        return code + "|" + name + "|" + drinkList + "|" + status;
+        return id + "|" + name + "|" + drinkList + "|" + status;
     }
 }
